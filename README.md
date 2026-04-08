@@ -4,7 +4,7 @@ Advanced portfolio construction engine comparing four optimization methods acros
 
 **Core thesis:** Naive mean-variance with sample covariance produces concentrated, unstable allocations. This project proves it quantitatively — showing how shrinkage, robust methods, and Bayesian priors deliver stabler, better-diversified portfolios.
 
-![Dashboard Screenshot](docs/screenshot_placeholder.png)
+![Dashboard](screenshot.png)
 
 ---
 
