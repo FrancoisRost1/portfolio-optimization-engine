@@ -1,0 +1,237 @@
+# =============================================================================
+# Portfolio Optimization Engine — config.yaml
+# All weights, thresholds, and assumptions live here. Never hardcode numbers.
+# =============================================================================
+
+# -----------------------------------------------------------------------------
+# Data
+# -----------------------------------------------------------------------------
+data:
+  provider: "yfinance"
+  lookback_years: 10
+  # Adjusted close prices; yfinance auto-adjusts for splits/dividends
+  price_field: "Adj Close"
+
+# -----------------------------------------------------------------------------
+# Asset universe
+# -----------------------------------------------------------------------------
+universe:
+  tickers:
+    - SPY
+    - EFA
+    - EEM
+    - IWM
+    - TLT
+    - IEF
+    - LQD
+    - HYG
+    - EMB
+    - GLD
+    - SLV
+    - DBC
+    - VNQ
+    - UUP
+
+  # Asset class mapping (used for class-level constraints + attribution)
+  asset_classes:
+    SPY: equities
+    EFA: equities
+    EEM: equities
+    IWM: equities
+    TLT: bonds
+    IEF: bonds
+    LQD: bonds
+    HYG: bonds
+    EMB: bonds
+    GLD: commodities
+    SLV: commodities
+    DBC: commodities
+    VNQ: reits
+    UUP: fx
+
+# -----------------------------------------------------------------------------
+# Portfolio constraints
+# -----------------------------------------------------------------------------
+constraints:
+  long_only: true
+
+  # Per-asset weight bounds
+  per_asset:
+    floor: 0.00       # minimum weight per asset
+    cap: 0.30          # maximum weight per asset
+
+  # Per-asset-class caps (sum of weights within class)
+  per_class:
+    equities: 0.60
+    bonds: 0.60
+    commodities: 0.30
+    reits: 0.20
+    fx: 0.15
+
+  # Turnover constraint (optional — only enforced when < 1.0)
+  max_turnover: 1.00   # 1.0 = unconstrained; set e.g. 0.30 to cap at 30%
+
+# -----------------------------------------------------------------------------
+# Covariance estimation
+# -----------------------------------------------------------------------------
+covariance:
+  # Default method: "ledoit_wolf" | "sample" | "rmt"
+  default_method: "ledoit_wolf"
+
+  # RMT / Marchenko-Pastur cleaning
+  rmt:
+    noise_estimate: "median"   # "median" eigenvalue for σ² estimate
+    preserve_trace: true       # rescale cleaned matrix to preserve total variance
+    eigenvalue_floor: 1.0e-10  # floor for cleaned eigenvalues (avoid negatives)
+
+# -----------------------------------------------------------------------------
+# Expected returns
+# -----------------------------------------------------------------------------
+expected_returns:
+  # Default method for Mean-Variance: "shrinkage" | "bl_implied"
+  # CRITICAL: never "historical" — raw means are banned
+  default_method: "shrinkage"
+
+  shrinkage:
+    intensity: 0.50    # δ: pull toward grand mean (0 = pure historical, 1 = pure grand mean)
+
+# -----------------------------------------------------------------------------
+# Optimization parameters
+# -----------------------------------------------------------------------------
+optimization:
+  # Risk aversion coefficient (used in MV objective and BL equilibrium)
+  risk_aversion: 2.5   # γ / λ
+
+  # Mean-Variance
+  mean_variance:
+    solver: "SLSQP"
+    # Number of points on the efficient frontier
+    frontier_points: 50
+
+  # Risk Parity
+  risk_parity:
+    solver: "SLSQP"
+    max_iter: 1000
+    tolerance: 1.0e-10
+
+  # HRP
+  hrp:
+    linkage_method: "single"   # "single" | "complete" | "average" | "ward"
+    distance_metric: "correlation"  # d(i,j) = sqrt(0.5 * (1 - ρ_ij))
+
+# -----------------------------------------------------------------------------
+# Black-Litterman
+# -----------------------------------------------------------------------------
+black_litterman:
+  tau: 0.05              # scaling factor for prior uncertainty
+  risk_aversion: 2.5     # λ for implied equilibrium returns (same as optimization.risk_aversion)
+
+  # Market-cap weight source: "yfinance" (runtime fetch) | "manual"
+  market_cap_source: "yfinance"
+
+  # Manual fallback weights (used if yfinance fetch fails for any ticker)
+  # These are approximate AUM-based weights — update periodically
+  manual_market_weights:
+    SPY: 0.25
+    EFA: 0.10
+    EEM: 0.05
+    IWM: 0.05
+    TLT: 0.10
+    IEF: 0.08
+    LQD: 0.06
+    HYG: 0.04
+    EMB: 0.03
+    GLD: 0.07
+    SLV: 0.02
+    DBC: 0.03
+    VNQ: 0.07
+    UUP: 0.05
+
+  # Default investor views (can be overridden in dashboard)
+  # Format: ticker: expected_annual_return (absolute view)
+  # Empty dict = no views (posterior = prior)
+  default_views:
+    SPY: 0.08        # bullish on US large cap
+    TLT: -0.02       # bearish on long duration
+    GLD: 0.06        # mild gold bull
+
+  # Confidence per view (0 to 1; 1 = maximum confidence)
+  # Missing ticker = default confidence
+  view_confidence:
+    SPY: 0.70
+    TLT: 0.50
+    GLD: 0.40
+
+  default_confidence: 0.50   # fallback for views without explicit confidence
+
+# -----------------------------------------------------------------------------
+# Volatility targeting (post-optimization overlay, optional)
+# -----------------------------------------------------------------------------
+vol_targeting:
+  enabled: false
+  target_annual_vol: 0.10   # 10% annualized
+  max_scale: 1.00            # no leverage (cap scale factor at 1.0)
+
+# -----------------------------------------------------------------------------
+# Backtest
+# -----------------------------------------------------------------------------
+backtest:
+  # Rebalance frequency: "monthly" | "quarterly" | "weekly"
+  rebalance_frequency: "monthly"
+
+  # Estimation window
+  window_type: "rolling"       # "rolling" | "expanding"
+  window_days: 252             # trading days (only used if window_type = "rolling")
+
+  # Transaction costs
+  transaction_cost_bps: 10     # basis points per unit of turnover
+
+  # Minimum history required before first rebalance (trading days)
+  min_history: 252
+
+# -----------------------------------------------------------------------------
+# Benchmarks
+# -----------------------------------------------------------------------------
+benchmarks:
+  spy_buy_hold:
+    ticker: "SPY"
+
+  sixty_forty:
+    equity_ticker: "SPY"
+    bond_ticker: "AGG"         # AGG used in benchmark only — not in optimization universe
+    equity_weight: 0.60
+    bond_weight: 0.40
+    rebalance: "monthly"
+
+  equal_weight:
+    # Uses universe tickers, 1/N weights, same rebalance frequency as backtest
+    rebalance: "monthly"
+
+  static_risk_parity:
+    # Risk parity weights computed once on full sample, held static thereafter
+    rebalance: "none"          # no rebalance — weights computed once
+
+# -----------------------------------------------------------------------------
+# Performance metrics
+# -----------------------------------------------------------------------------
+metrics:
+  risk_free_rate: 0.04         # annualized, for Sharpe/Sortino
+  cvar_percentile: 0.05        # 5th percentile for CVaR 95%
+  rolling_sharpe_window: 252   # trading days (12-month rolling Sharpe)
+
+# -----------------------------------------------------------------------------
+# Dashboard
+# -----------------------------------------------------------------------------
+dashboard:
+  tabs:
+    - "Overview"
+    - "Efficient Frontier"
+    - "Weight Comparison"
+    - "Risk Decomposition"
+    - "Backtest"
+    - "Covariance Lab"
+    - "Naive vs Robust"
+    - "Black-Litterman Views"
+
+  # Bloomberg dark mode — enforced via style_inject.py + .streamlit/config.toml
+  theme: "bloomberg_dark"

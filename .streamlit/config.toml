@@ -1,0 +1,12 @@
+# ───────────────────────────────────────────
+# .streamlit/config.toml
+# Copy this file to your project's .streamlit/ folder
+# ───────────────────────────────────────────
+
+[theme]
+base = "dark"
+primaryColor = "#6366F1"
+backgroundColor = "#0B0F19"
+secondaryBackgroundColor = "#111827"
+textColor = "#F1F5F9"
+font = "sans serif"
