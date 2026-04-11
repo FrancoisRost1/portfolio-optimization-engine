@@ -50,7 +50,7 @@ def render(results: dict):
             styled_kpi("Shallowest DD", f"{best_dd:.1%}", best_dd_name,
                         TOKENS["accent_success"])
         with c3:
-            styled_kpi("Most Diversified", f"{min_herf:.4f}", f"HHI — {min_herf_name}",
+            styled_kpi("Most Diversified", f"{min_herf:.4f}", f"HHI: {min_herf_name}",
                         TOKENS["accent_info"])
         with c4:
             styled_kpi("Assets", str(len(results["prices"].columns)), "in universe",
@@ -135,13 +135,13 @@ def render(results: dict):
 
     verdicts = [
         ("Mean-Variance", TOKENS["accent_primary"],
-         "Highest turnover, fragile to estimation error — use with shrinkage only"),
+         "Highest turnover, fragile to estimation error: use with shrinkage only"),
         ("HRP", TOKENS["accent_warning"],
          "Most stable diversification, best risk-adjusted at equal volatility"),
         ("Risk Parity", TOKENS["accent_success"],
-         "Lowest turnover, robust baseline — the default choice for most allocators"),
+         "Lowest turnover, robust baseline: the default choice for most allocators"),
         ("Black-Litterman", TOKENS["accent_secondary"],
-         "View-dependent — not a standalone alpha engine, but the right tool for expressing conviction"),
+         "View-dependent: not a standalone alpha engine, but the right tool for expressing conviction"),
     ]
 
     for name, color, verdict in verdicts:

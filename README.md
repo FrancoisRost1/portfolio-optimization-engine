@@ -2,7 +2,7 @@
 
 Advanced portfolio construction engine comparing four optimization methods across three covariance estimation techniques, with a rolling backtest and an 8-tab Bloomberg dark mode Streamlit dashboard.
 
-**Core thesis:** Naive mean-variance with sample covariance produces concentrated, unstable allocations. This project proves it quantitatively — showing how shrinkage, robust methods, and Bayesian priors deliver stabler, better-diversified portfolios.
+**Core thesis:** Naive mean-variance with sample covariance produces concentrated, unstable allocations. This project proves it quantitatively, showing how shrinkage, robust methods, and Bayesian priors deliver stabler, better-diversified portfolios.
 
 ![Dashboard](screenshot.png)
 
@@ -14,8 +14,8 @@ Advanced portfolio construction engine comparing four optimization methods acros
 - **3 Covariance Estimators:** Sample (baseline), Ledoit-Wolf shrinkage (default), RMT / Marchenko-Pastur cleaning
 - **14 ETFs** across 5 asset classes: equities (SPY, EFA, EEM, IWM), bonds (TLT, IEF, LQD, HYG, EMB), commodities (GLD, SLV, DBC), REITs (VNQ), FX (UUP)
 - **10-year rolling backtest** with strict t/t+1 signal timing (no lookahead), transaction costs, and weight drift
-- **Vol-normalized comparison** — scale all strategies to 10% target vol for fair risk-adjusted comparison
-- **Gross vs net analysis** — proves turnover costs eat unstable methods alive
+- **Vol-normalized comparison**, scale all strategies to 10% target vol for fair risk-adjusted comparison
+- **Gross vs net analysis**, proves turnover costs eat unstable methods alive
 - **166 unit tests** covering all core modules, Codex-audited (GPT-5.4, HIGH reasoning)
 
 ---
@@ -31,7 +31,7 @@ Advanced portfolio construction engine comparing four optimization methods acros
 | HRP | 4.23% | 6.17% | 0.07 | -15.5% | 1.6x/yr |
 | Black-Litterman | 9.37% | 15.39% | 0.41 | -33.5% | 1.5x/yr |
 
-### Vol-Normalized (10% target vol) — The Fair Comparison
+### Vol-Normalized (10% target vol), The Fair Comparison
 
 | Strategy | CAGR | Vol | Sharpe | Max DD |
 |----------|------|-----|--------|--------|
@@ -46,10 +46,10 @@ Advanced portfolio construction engine comparing four optimization methods acros
 
 ## Strategy Verdicts
 
-- **Mean-Variance:** Highest turnover, fragile to estimation error — use with shrinkage only
+- **Mean-Variance:** Highest turnover, fragile to estimation error, use with shrinkage only
 - **HRP:** Most stable diversification, best risk-adjusted at equal volatility
-- **Risk Parity:** Lowest turnover, robust baseline — the default choice for most allocators
-- **Black-Litterman:** View-dependent — not a standalone alpha engine, but the right tool for expressing conviction
+- **Risk Parity:** Lowest turnover, robust baseline, the default choice for most allocators
+- **Black-Litterman:** View-dependent, not a standalone alpha engine, but the right tool for expressing conviction
 
 ---
 
@@ -111,7 +111,7 @@ python3 -m pytest tests/ -v              # Run tests
 
 ## Technical Highlights
 
-- **RMT cleaning** operates on the standardized correlation matrix, not raw covariance — textbook Marchenko-Pastur
+- **RMT cleaning** operates on the standardized correlation matrix, not raw covariance, textbook Marchenko-Pastur
 - **Black-Litterman** uses `np.linalg.solve()` for numerical stability, not direct matrix inversion
 - **Backtester** enforces strict t/t+1 signal timing: weights computed at close(t) apply at close(t+1)
 - **Solver verification**: MV and RP check `result.success` and warn on non-convergence
@@ -128,4 +128,4 @@ pandas, numpy, scipy, scikit-learn, yfinance, pyyaml, streamlit, plotly, pytest
 
 ---
 
-*Part of the [Finance Lab](https://github.com/FrancoisRost1) — Project 8/11*
+*Part of the [Finance Lab](https://github.com/FrancoisRost1), Project 8/11*

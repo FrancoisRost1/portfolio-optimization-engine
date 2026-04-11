@@ -80,7 +80,7 @@ def render(results: dict):
             line=dict(color=COLORS[name], width=2),
         ))
     fig.update_layout(
-        title="Cumulative Returns — Naive vs Robust",
+        title="Cumulative Returns: Naive vs Robust",
         yaxis_title="Growth of $1", height=400,
         legend=dict(orientation="h", y=-0.15), hovermode="x unified",
     )
@@ -137,7 +137,7 @@ def render(results: dict):
         st.plotly_chart(fig_to, use_container_width=True)
 
         styled_card(
-            "MV exhibits fat-tailed turnover — unpredictable execution costs. "
+            "MV exhibits fat-tailed turnover: unpredictable execution costs. "
             "HRP turnover is concentrated and predictable.",
             accent_color=TOKENS["accent_warning"],
         )
@@ -224,7 +224,7 @@ def render(results: dict):
             gap = oos_sharpe - is_sharpe
             # Handle negative IS Sharpe: label as regime shift
             if is_sharpe < 0:
-                note = "Regime shift — IS not reliable"
+                note = "Regime shift: IS not reliable"
             elif gap >= 0:
                 note = "Improved OOS"
             else:
@@ -263,7 +263,7 @@ def render(results: dict):
         rows = []
         for n in names:
             d = degrad_data[n]
-            gap_str = f"{d['Gap']:+.2f}" if d["Note"] != "Regime shift — IS not reliable" else "N/A"
+            gap_str = f"{d['Gap']:+.2f}" if d["Note"] != "Regime shift: IS not reliable" else "N/A"
             rows.append({
                 "IS Sharpe": f"{d['IS Sharpe']:.2f}",
                 "OOS Sharpe": f"{d['OOS Sharpe']:.2f}",
@@ -275,7 +275,7 @@ def render(results: dict):
 
         styled_card(
             "OOS > IS (positive gap) may indicate a favorable sample period or lack of "
-            "overfitting — not guaranteed alpha. A large negative gap signals that "
+            "overfitting: not guaranteed alpha. A large negative gap signals that "
             "in-sample performance was driven by noise, not signal.",
             accent_color=TOKENS["accent_info"],
         )
@@ -283,7 +283,7 @@ def render(results: dict):
     styled_divider()
 
     # ── (d) Gross vs Net: turnover cost eats MV+Sample alive ──
-    styled_section_label("Gross vs Net Return — Turnover Cost Impact")
+    styled_section_label("Gross vs Net Return: Turnover Cost Impact")
 
     tc_bps = config.get("backtest", {}).get("transaction_cost_bps", 10)
     gn_data = {}
@@ -311,7 +311,7 @@ def render(results: dict):
             marker_color=[COLORS.get(n, TOKENS["text_muted"]) for n in names],
         ))
         fig_gn.update_layout(
-            title="Gross vs Net Sharpe — Turnover Cost Impact",
+            title="Gross vs Net Sharpe: Turnover Cost Impact",
             barmode="group", yaxis_title="Sharpe Ratio", height=320,
             legend=dict(orientation="h", y=1.12),
         )
@@ -406,7 +406,7 @@ def render(results: dict):
 
         styled_card(
             "<b>Weight Stability:</b> MV + Sample has the highest average weight change "
-            "per rebalance — its allocations swing wildly because noisy eigenvalues "
+            "per rebalance: its allocations swing wildly because noisy eigenvalues "
             "produce unstable optima. RP and HRP maintain steady allocations, "
             "translating to lower turnover and more predictable exposures.",
             accent_color=TOKENS["accent_info"],
@@ -417,10 +417,10 @@ def render(results: dict):
     # ── Key message ──
     styled_card(
         "<b>The Proof:</b> MV + Sample covariance is the worst on every dimension: "
-        "(1) highest turnover — 3-5x more trading than HRP, (2) most concentrated "
-        "portfolios — highest Herfindahl, (3) largest out-of-sample Sharpe degradation, "
-        "(4) transaction costs eat it alive — the gap between gross and net Sharpe is "
-        "widest for MV+Sample, (5) highest weight instability — allocations swing "
+        "(1) highest turnover: 3-5x more trading than HRP, (2) most concentrated "
+        "portfolios: highest Herfindahl, (3) largest out-of-sample Sharpe degradation, "
+        "(4) transaction costs eat it alive: the gap between gross and net Sharpe is "
+        "widest for MV+Sample, (5) highest weight instability: allocations swing "
         "wildly at every rebalance. <b>Shrink the covariance or use a non-optimizer method.</b>",
         accent_color=TOKENS["accent_danger"],
     )

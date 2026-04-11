@@ -214,6 +214,6 @@ def render(results: dict):
         )
     else:
         styled_card(
-            "No active views — posterior equals prior (pure equilibrium returns).",
+            "No active views: posterior equals prior (pure equilibrium returns).",
             accent_color=TOKENS["text_muted"],
         )

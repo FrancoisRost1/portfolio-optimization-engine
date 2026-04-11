@@ -26,12 +26,12 @@ TOKENS = {
     "bg_hover": "#1E293B",       # Hover states
 
     # Accent colors
-    "accent_primary": "#6366F1",    # Indigo — primary actions
-    "accent_secondary": "#8B5CF6",  # Purple — secondary elements
-    "accent_success": "#10B981",    # Emerald — positive states
-    "accent_warning": "#F59E0B",    # Amber — warnings
-    "accent_danger": "#EF4444",     # Red — errors/alerts
-    "accent_info": "#3B82F6",       # Blue — informational
+    "accent_primary": "#6366F1",    # Indigo: primary actions
+    "accent_secondary": "#8B5CF6",  # Purple: secondary elements
+    "accent_success": "#10B981",    # Emerald: positive states
+    "accent_warning": "#F59E0B",    # Amber: warnings
+    "accent_danger": "#EF4444",     # Red: errors/alerts
+    "accent_info": "#3B82F6",       # Blue: informational
 
     # Text hierarchy
     "text_primary": "#F1F5F9",      # Main text
@@ -661,7 +661,7 @@ def apply_plotly_theme(fig):
     Apply the dark sleek theme to any Plotly figure.
 
     Preserves any existing title text. The theme only sets font/position
-    defaults — it never overwrites the title string.
+    defaults: it never overwrites the title string.
 
     Usage:
         import plotly.express as px

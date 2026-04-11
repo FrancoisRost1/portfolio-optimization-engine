@@ -94,7 +94,7 @@ def render(results: dict):
     styled_divider()
 
     # ── Cross-method risk contribution comparison ──
-    styled_section_label("Risk Contribution Comparison — All Methods")
+    styled_section_label("Risk Contribution Comparison: All Methods")
 
     fig2 = go.Figure()
     colors = [TOKENS["accent_primary"], TOKENS["accent_success"],
@@ -117,7 +117,7 @@ def render(results: dict):
     )
 
     fig2.update_layout(
-        title="Risk Contribution — All Methods",
+        title="Risk Contribution: All Methods",
         barmode="group",
         yaxis_tickformat=".0%",
         yaxis_title="% Risk Contribution",
@@ -128,7 +128,7 @@ def render(results: dict):
     st.plotly_chart(fig2, use_container_width=True)
 
     styled_card(
-        "Negative risk contribution indicates a diversification/hedging benefit — "
+        "Negative risk contribution indicates a diversification/hedging benefit: "
         "the asset reduces total portfolio risk rather than adding to it.",
         accent_color=TOKENS["accent_info"],
     )

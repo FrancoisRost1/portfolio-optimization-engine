@@ -1,14 +1,14 @@
-# Portfolio Optimization Engine — Investment Analysis
+# Portfolio Optimization Engine, Investment Analysis
 
 ## Investment Thesis
 
-**The thesis is methodological, not directional:** most institutional portfolios are built with naive mean-variance optimization using sample covariance matrices. This approach is provably fragile — noisy eigenvalues produce concentrated, unstable allocations that degrade out-of-sample and generate excessive turnover.
+**The thesis is methodological, not directional:** most institutional portfolios are built with naive mean-variance optimization using sample covariance matrices. This approach is provably fragile, noisy eigenvalues produce concentrated, unstable allocations that degrade out-of-sample and generate excessive turnover.
 
 This engine demonstrates three superior alternatives:
 
 1. **Covariance shrinkage (Ledoit-Wolf)** reduces the condition number of the covariance matrix by 10-100x, producing more stable weights with minimal return sacrifice.
 2. **Hierarchical Risk Parity (HRP)** bypasses matrix inversion entirely, using correlation-based clustering to produce diversified allocations that are inherently stable.
-3. **Black-Litterman** anchors to market equilibrium and only deviates when the allocator has an explicit, quantified view — preventing the optimizer from chasing noise in historical means.
+3. **Black-Litterman** anchors to market equilibrium and only deviates when the allocator has an explicit, quantified view, preventing the optimizer from chasing noise in historical means.
 
 **The key finding:** At equal volatility (10% target), HRP achieves the highest Sharpe ratio (0.62) with the most stable weights and lowest concentration. Risk Parity offers the lowest turnover (0.6x/yr) and the most predictable execution costs. Mean-Variance, even with Ledoit-Wolf shrinkage, trades 5.8x/yr and loses 5.13% to transaction costs over the backtest period.
 
@@ -88,25 +88,25 @@ This project does not value individual securities. The relevant "valuation" assu
 
 ## Key Quantitative Findings
 
-1. **MV trades 9.7x more than RP** (5.8x vs 0.6x annual turnover) — transaction costs consume 5.13% of cumulative return over the backtest
+1. **MV trades 9.7x more than RP** (5.8x vs 0.6x annual turnover), transaction costs consume 5.13% of cumulative return over the backtest
 2. **At equal 10% vol, HRP beats all optimizers** (Sharpe 0.62 vs MV 0.59, BL 0.46, RP 0.57)
 3. **Ledoit-Wolf shrinkage reduces condition number by 10-100x** compared to sample covariance
-4. **MV+Sample out-of-sample Sharpe degrades the most** — confirming that sample covariance overfit is real and measurable
+4. **MV+Sample out-of-sample Sharpe degrades the most**, confirming that sample covariance overfit is real and measurable
 5. **Risk Parity achieves near-perfect equal risk contributions** with the lowest weight instability across rebalances
-6. **Black-Litterman posterior tilts returns predictably** — views shift posterior toward the viewed asset while non-viewed assets anchor to equilibrium
+6. **Black-Litterman posterior tilts returns predictably**, views shift posterior toward the viewed asset while non-viewed assets anchor to equilibrium
 
 ---
 
 ## Conclusion
 
 For a multi-asset allocator:
-- **Default choice:** Risk Parity — lowest cost, most stable, robust baseline
-- **If you have views:** Black-Litterman — but only with quantified, high-conviction views
-- **Best risk-adjusted:** HRP at equal volatility — the stability premium is real
-- **Avoid:** MV with sample covariance — provably inferior on every dimension
+- **Default choice:** Risk Parity, lowest cost, most stable, robust baseline
+- **If you have views:** Black-Litterman, but only with quantified, high-conviction views
+- **Best risk-adjusted:** HRP at equal volatility, the stability premium is real
+- **Avoid:** MV with sample covariance, provably inferior on every dimension
 
 The right question is not "which optimizer maximizes backtest Sharpe?" but "which method produces the most implementable, stable, cost-efficient allocation?" This project provides the quantitative answer.
 
 ---
 
-*Analysis prepared as part of the Portfolio Optimization Engine — Project 8 of the Finance Lab.*
+*Analysis prepared as part of the Portfolio Optimization Engine, Project 8 of the Finance Lab.*

@@ -89,7 +89,7 @@ def render(results: dict):
         hovertemplate="%{x} vs %{y}: %{z:.3f}<extra></extra>",
         colorbar=dict(title="Corr"),
     ))
-    fig_corr.update_layout(title="Correlation Matrix — " + cov_choice, height=450, yaxis_autorange="reversed")
+    fig_corr.update_layout(title="Correlation Matrix: " + cov_choice, height=450, yaxis_autorange="reversed")
     apply_plotly_theme(fig_corr)
     st.plotly_chart(fig_corr, use_container_width=True)
 

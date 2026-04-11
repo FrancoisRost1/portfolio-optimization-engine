@@ -55,7 +55,7 @@ st.sidebar.markdown(
 )
 
 
-@st.cache_data(show_spinner="Running pipeline — fetching data & optimising...")
+@st.cache_data(show_spinner="Running pipeline: fetching data & optimising...")
 def load_results():
     """Run the full pipeline and cache results."""
     from main import run_pipeline

@@ -99,7 +99,7 @@ def render(results: dict):
     ))
 
     fig.update_layout(
-        title="Efficient Frontier — Risk vs Return",
+        title="Efficient Frontier: Risk vs Return",
         xaxis_title="Annualised Volatility",
         yaxis_title="Annualised Return",
         xaxis_tickformat=".1%",
