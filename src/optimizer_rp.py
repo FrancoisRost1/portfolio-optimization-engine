@@ -56,7 +56,7 @@ def optimize_risk_parity(
     Parameters
     ----------
     cov : pd.DataFrame
-        N x N covariance matrix (daily frequency — annualised internally).
+        N x N covariance matrix (daily frequency, annualised internally).
     config : dict
         Full config dict.
     prev_weights : np.ndarray, optional
@@ -81,7 +81,7 @@ def optimize_risk_parity(
         """Sum of squared differences between all pairs of risk contributions."""
         marginal = sigma @ w
         rc = w * marginal  # Absolute risk contributions
-        # All pairs (RC_i - RC_j)^2 — equivalent to N * var(RC)
+        # All pairs (RC_i - RC_j)^2, equivalent to N * var(RC)
         target_rc = (w @ sigma @ w) / n
         return np.sum((rc - target_rc) ** 2)
 

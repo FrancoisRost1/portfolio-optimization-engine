@@ -186,7 +186,7 @@ def optimize_black_litterman(
     Parameters
     ----------
     cov : pd.DataFrame
-        N x N covariance matrix (daily frequency — annualised internally).
+        N x N covariance matrix (daily frequency, annualised internally).
     market_weights : pd.Series
         Market-cap weights for equilibrium returns.
     config : dict

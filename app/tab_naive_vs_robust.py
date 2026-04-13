@@ -1,5 +1,5 @@
 """
-Tab 7: Naive vs Robust — head-to-head proof that MV+Sample is inferior.
+Tab 7: Naive vs Robust, head-to-head proof that MV+Sample is inferior.
 
 Shows:
   (a) MV+Sample has 3-5x higher turnover than MV+LW and HRP

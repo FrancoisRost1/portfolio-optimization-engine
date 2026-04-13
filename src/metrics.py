@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 """
-Performance and risk metrics — computed on daily returns, annualized where applicable.
+Performance and risk metrics, computed on daily returns, annualized where applicable.
 
 All metrics follow standard institutional finance conventions:
   - Sharpe/Sortino use configurable risk-free rate

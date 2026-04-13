@@ -1,5 +1,5 @@
 """
-Data loader — fetches adjusted close prices from yfinance with caching.
+Data loader, fetches adjusted close prices from yfinance with caching.
 
 Handles missing data by dropping tickers with < 80% coverage and forward-
 filling remaining gaps. Caches raw downloads to data/cache/ to avoid

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 """
-Efficient frontier generation — sweeps target returns to trace the
+Efficient frontier generation, sweeps target returns to trace the
 risk-return frontier for mean-variance portfolios.
 """
 

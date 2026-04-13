@@ -1,5 +1,5 @@
 """
-Portfolio Optimization Engine — Streamlit Dashboard (8 tabs, Bloomberg dark mode).
+Portfolio Optimization Engine, Streamlit Dashboard (8 tabs, Bloomberg dark mode).
 
 Runs the full pipeline on load, then renders interactive tabs.
 """
@@ -14,7 +14,7 @@ if project_root not in sys.path:
 
 import streamlit as st
 
-# ── Page config — MUST be the first Streamlit call ──
+# ── Page config, MUST be the first Streamlit call ──
 st.set_page_config(
     page_title="Portfolio Optimization Engine",
     layout="wide",

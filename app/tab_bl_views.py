@@ -1,5 +1,5 @@
 """
-Tab 8: Black-Litterman Views — equilibrium returns, interactive view editor,
+Tab 8: Black-Litterman Views, equilibrium returns, interactive view editor,
 prior vs posterior comparison, confidence slider.
 """
 

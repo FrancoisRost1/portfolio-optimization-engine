@@ -1,5 +1,5 @@
 """
-Return computation — log returns for covariance estimation,
+Return computation, log returns for covariance estimation,
 arithmetic returns for performance measurement.
 
 Consistent with the signal-timing rule: returns measured from t to t+1.

@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 """
-Expected return estimation — two methods:
+Expected return estimation, two methods:
   1. Shrinkage returns (default for MV): pull historical means toward the grand mean
   2. Black-Litterman implied returns: equilibrium returns from market-cap weights
 
@@ -64,7 +64,7 @@ def bl_implied_returns(
     Parameters
     ----------
     cov : pd.DataFrame
-        N x N covariance matrix (annualized or daily — must be consistent).
+        N x N covariance matrix (annualized or daily, must be consistent).
     market_weights : pd.Series
         Market-cap weights, must sum to ~1.0 and align with cov index.
     risk_aversion : float

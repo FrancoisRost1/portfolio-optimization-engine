@@ -1,8 +1,8 @@
 """
-Covariance estimation — three methods:
-  1. Sample covariance (baseline only — noisy, unstable inverse)
-  2. Ledoit-Wolf shrinkage (default — α-weighted blend of sample + structured target)
-  3. RMT / Marchenko-Pastur cleaning (advanced — removes noise eigenvalues)
+Covariance estimation, three methods:
+  1. Sample covariance (baseline only, noisy, unstable inverse)
+  2. Ledoit-Wolf shrinkage (default, α-weighted blend of sample + structured target)
+  3. RMT / Marchenko-Pastur cleaning (advanced, removes noise eigenvalues)
 """
 
 import numpy as np
@@ -16,7 +16,7 @@ def sample_covariance(returns: pd.DataFrame) -> pd.DataFrame:
     Σ_sample = (1 / (T-1)) × X'X where X = demeaned returns.
 
     Known problems: noisy eigenvalues, unstable inverse, poor out-of-sample.
-    Used ONLY as a comparison baseline — never as default.
+    Used ONLY as a comparison baseline, never as default.
 
     Parameters
     ----------
@@ -64,7 +64,7 @@ def rmt_covariance(returns: pd.DataFrame, config: dict) -> tuple[pd.DataFrame, d
     """Compute covariance with Random Matrix Theory (Marchenko-Pastur) cleaning.
 
     The cleaning is applied to the CORRELATION matrix (standardised), not the
-    raw covariance — this is the textbook Marchenko-Pastur procedure:
+    raw covariance, this is the textbook Marchenko-Pastur procedure:
       1. Standardise sample cov to correlation C
       2. Eigendecompose C
       3. Estimate noise variance σ² = median eigenvalue of C

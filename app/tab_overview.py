@@ -1,5 +1,5 @@
 """
-Tab 1: Overview — summary metrics table, current weights bar chart,
+Tab 1: Overview, summary metrics table, current weights bar chart,
 key takeaway callout.
 """
 

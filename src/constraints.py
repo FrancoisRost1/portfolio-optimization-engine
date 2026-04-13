@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 """
-Constraint builder — constructs scipy-compatible constraints and bounds
+Constraint builder, constructs scipy-compatible constraints and bounds
 for portfolio optimization.
 
 Handles per-asset bounds, per-class caps, and optional turnover limits.

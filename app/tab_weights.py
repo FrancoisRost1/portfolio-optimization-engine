@@ -1,5 +1,5 @@
 """
-Tab 3: Weight Comparison — side-by-side bars, asset class pies,
+Tab 3: Weight Comparison, side-by-side bars, asset class pies,
 rolling weight heatmap from backtest.
 """
 

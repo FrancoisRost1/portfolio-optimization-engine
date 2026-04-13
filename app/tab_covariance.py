@@ -1,5 +1,5 @@
 """
-Tab 6: Covariance Lab — correlation heatmap, eigenvalue spectrum with
+Tab 6: Covariance Lab, correlation heatmap, eigenvalue spectrum with
 Marchenko-Pastur bounds, condition number comparison, shrinkage intensity.
 """
 

@@ -1,5 +1,5 @@
 """
-Volatility targeting — optional post-optimization overlay.
+Volatility targeting, optional post-optimization overlay.
 
 Scales optimised weights so that the portfolio's annualised volatility
 matches a target level. Capped at scale_factor <= 1.0 (no leverage
@@ -59,7 +59,7 @@ def apply_vol_target(
     if port_vol > 0:
         scale = min(target_vol / port_vol, max_scale)
     else:
-        # Portfolio vol is zero — keep weights as-is
+        # Portfolio vol is zero, keep weights as-is
         scale = 1.0
 
     w_scaled = weights * scale

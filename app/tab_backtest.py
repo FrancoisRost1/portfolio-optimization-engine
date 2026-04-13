@@ -1,5 +1,5 @@
 """
-Tab 5: Backtest — cumulative returns, drawdowns, rolling Sharpe,
+Tab 5: Backtest, cumulative returns, drawdowns, rolling Sharpe,
 metrics table (raw + vol-normalised), turnover analysis, gross vs net.
 """
 

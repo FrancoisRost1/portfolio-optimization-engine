@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 """
-Rolling backtest engine — walks forward through time, re-estimating
+Rolling backtest engine, walks forward through time, re-estimating
 covariance and re-optimizing weights at each rebalance date.
 
 Signal timing (CRITICAL):
@@ -114,7 +114,7 @@ def run_backtest(
 
             portfolio_returns.append((date, port_ret))
 
-            # Drift weights to reflect market moves (cash earns 0 — simplifying assumption)
+            # Drift weights to reflect market moves (cash earns 0, simplifying assumption)
             # If vol targeting is active, weights sum to < 1 (implicit cash).
             # We preserve that structure by NOT renormalising to 1.
             risky_sum_before = current_weights.sum()

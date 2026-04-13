@@ -32,7 +32,7 @@ def optimize_mean_variance(
     expected_returns : pd.Series
         Annualized expected returns per asset.
     cov : pd.DataFrame
-        N x N covariance matrix (daily frequency — annualised internally).
+        N x N covariance matrix (daily frequency, annualised internally).
     config : dict
         Full config dict.
     prev_weights : np.ndarray, optional
@@ -108,7 +108,7 @@ def optimize_for_target_return(
     expected_returns : pd.Series
         Annualized expected returns per asset.
     cov : pd.DataFrame
-        N x N covariance matrix (daily — annualised internally).
+        N x N covariance matrix (daily, annualised internally).
     config : dict
         Full config dict.
 

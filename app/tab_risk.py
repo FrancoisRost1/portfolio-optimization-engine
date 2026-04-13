@@ -1,5 +1,5 @@
 """
-Tab 4: Risk Decomposition — risk contribution bars, marginal risk table,
+Tab 4: Risk Decomposition, risk contribution bars, marginal risk table,
 pct risk vs pct weight, Herfindahl comparison.
 """
 

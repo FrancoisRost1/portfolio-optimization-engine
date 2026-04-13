@@ -1,5 +1,5 @@
 """
-Risk decomposition — risk contribution, marginal risk, Herfindahl index.
+Risk decomposition, risk contribution, marginal risk, Herfindahl index.
 
 Decomposes total portfolio variance into per-asset contributions, enabling
 comparison of diversification quality across optimization methods.

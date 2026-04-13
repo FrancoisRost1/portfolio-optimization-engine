@@ -1,5 +1,5 @@
 """
-Tab 2: Efficient Frontier — frontier curve, portfolio overlays,
+Tab 2: Efficient Frontier, frontier curve, portfolio overlays,
 covariance method toggle.
 """
 

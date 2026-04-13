@@ -1,12 +1,12 @@
 """
-Hierarchical Risk Parity (HRP) — Lopez de Prado (2016).
+Hierarchical Risk Parity (HRP), Lopez de Prado (2016).
 
 Three steps:
   1. Cluster assets by correlation distance using hierarchical clustering.
   2. Quasi-diagonalise: reorder the covariance matrix by dendrogram leaf order.
   3. Recursive bisection: allocate inverse-variance weights within each branch.
 
-No optimizer needed — purely algorithmic, no matrix inversion. Naturally
+No optimizer needed, purely algorithmic, no matrix inversion. Naturally
 produces diversified, stable allocations.
 """
 
@@ -69,7 +69,7 @@ def recursive_bisection(
     Parameters
     ----------
     cov : np.ndarray
-        N x N covariance matrix (reordered is not required — we use indices).
+        N x N covariance matrix (reordered is not required, we use indices).
     sorted_indices : list[int]
         Asset indices in quasi-diagonal order.
 
@@ -149,7 +149,7 @@ def optimize_hrp(
     Parameters
     ----------
     cov : pd.DataFrame
-        N x N covariance matrix (daily frequency — annualised internally).
+        N x N covariance matrix (daily frequency, annualised internally).
     config : dict
         Full config dict.
 

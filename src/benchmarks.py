@@ -1,9 +1,9 @@
 """
-Benchmark portfolio construction — SPY buy-and-hold, 60/40, equal-weight,
+Benchmark portfolio construction, SPY buy-and-hold, 60/40, equal-weight,
 and static risk parity.
 
 Benchmarks are computed on the same date range as the backtest for fair
-comparison. AGG is used in the 60/40 benchmark only — not in the optimisation
+comparison. AGG is used in the 60/40 benchmark only, not in the optimisation
 universe.
 """
 
@@ -154,7 +154,7 @@ def static_risk_parity(
     prices : pd.DataFrame
         Full price DataFrame.
     cov : pd.DataFrame
-        Full-sample covariance matrix (unused — kept for API compat).
+        Full-sample covariance matrix (unused, kept for API compat).
     config : dict
         Full config dict.
 
@@ -172,7 +172,7 @@ def static_risk_parity(
     rp_weights = optimize_risk_parity(init_cov, config)
     rets = prices.pct_change().dropna()
 
-    # Simple weighted returns — no rebalance (weights drift)
+    # Simple weighted returns, no rebalance (weights drift)
     weights = rp_weights.reindex(rets.columns).values
 
     portfolio_returns = []
