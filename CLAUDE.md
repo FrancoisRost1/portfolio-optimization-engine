@@ -468,4 +468,12 @@ pytest
 
 ---
 
+## Streamlit Cloud pass (2026-04-13)
+
+- Migrated `use_container_width` → `width="stretch"/"content"` across the app layer ahead of the Streamlit deprecation-to-error window.
+- Rewrote the footer at `app/app.py:109` from a multi-line indented triple-quoted f-string to single-line concatenated f-strings. Leading whitespace in `st.markdown` input is parsed as a Markdown code block even when `unsafe_allow_html=True`, which was leaking `</div>` as visible text in the Streamlit Cloud render.
+
+---
+
 *Project CLAUDE.md — Created: 2025-04-08*
+*Last updated: 2026-04-13*
