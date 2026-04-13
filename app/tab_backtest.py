@@ -37,8 +37,8 @@ METHOD_COLORS = {
 BENCH_COLORS = {
     "SPY B&H": TOKENS["text_muted"],
     "60/40": TOKENS["accent_info"],
-    "Equal Weight": "#EC4899",
-    "Static RP": "#14B8A6",
+    "Equal Weight": TOKENS["accent_danger"],
+    "Static RP": TOKENS["accent_warning"],
 }
 
 

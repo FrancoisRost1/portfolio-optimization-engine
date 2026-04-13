@@ -17,7 +17,6 @@ import streamlit as st
 # ── Page config — MUST be the first Streamlit call ──
 st.set_page_config(
     page_title="Portfolio Optimization Engine",
-    page_icon="◆",
     layout="wide",
     initial_sidebar_state="expanded",
 )
@@ -42,7 +41,7 @@ st.sidebar.markdown(
             font-weight: 700;
             font-size: 1.3rem;
             color: {TOKENS['accent_primary']};
-        ">◆ Portfolio Engine</span>
+        ">Portfolio Engine</span>
         <br>
         <span style="
             font-family: {TOKENS['font_body']};
