@@ -91,7 +91,7 @@ def render(results: dict):
     ))
     fig_corr.update_layout(title="Correlation Matrix: " + cov_choice, height=450, yaxis_autorange="reversed")
     apply_plotly_theme(fig_corr)
-    st.plotly_chart(fig_corr, use_container_width=True)
+    st.plotly_chart(fig_corr, width="stretch")
 
     styled_divider()
 
@@ -141,7 +141,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=1.12),
     )
     apply_plotly_theme(fig_eig)
-    st.plotly_chart(fig_eig, use_container_width=True)
+    st.plotly_chart(fig_eig, width="stretch")
 
     styled_divider()
 
@@ -163,7 +163,7 @@ def render(results: dict):
         height=320,
     )
     apply_plotly_theme(fig_cond)
-    st.plotly_chart(fig_cond, use_container_width=True)
+    st.plotly_chart(fig_cond, width="stretch")
 
     styled_card(
         "High condition number (>300) = unstable matrix inversion = noisy weights. "

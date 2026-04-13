@@ -75,7 +75,7 @@ def render(results: dict):
         for drop_col in ["Tracking Error", "Information Ratio"]:
             if drop_col in df.columns:
                 df = df.drop(columns=drop_col)
-        st.dataframe(df, use_container_width=True, hide_index=False)
+        st.dataframe(df, width="stretch", hide_index=False)
 
     styled_divider()
 
@@ -116,7 +116,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=1.12),
     )
     apply_plotly_theme(fig)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     # ── Key takeaway ──
     if metrics_table:

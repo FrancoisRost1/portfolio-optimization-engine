@@ -85,7 +85,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=-0.15), hovermode="x unified",
     )
     apply_plotly_theme(fig)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     styled_divider()
 
@@ -134,7 +134,7 @@ def render(results: dict):
             legend=dict(orientation="h", y=-0.2), hovermode="x unified",
         )
         apply_plotly_theme(fig_to)
-        st.plotly_chart(fig_to, use_container_width=True)
+        st.plotly_chart(fig_to, width="stretch")
 
         styled_card(
             "MV exhibits fat-tailed turnover: unpredictable execution costs. "
@@ -176,7 +176,7 @@ def render(results: dict):
             hovermode="x unified",
         )
         apply_plotly_theme(fig_herf)
-        st.plotly_chart(fig_herf, use_container_width=True)
+        st.plotly_chart(fig_herf, width="stretch")
 
     styled_divider()
 
@@ -205,7 +205,7 @@ def render(results: dict):
             height=350, legend=dict(orientation="h", y=1.12),
         )
         apply_plotly_theme(fig_stab)
-        st.plotly_chart(fig_stab, use_container_width=True)
+        st.plotly_chart(fig_stab, width="stretch")
 
     styled_divider()
 
@@ -257,7 +257,7 @@ def render(results: dict):
             legend=dict(orientation="h", y=1.12),
         )
         apply_plotly_theme(fig_deg)
-        st.plotly_chart(fig_deg, use_container_width=True)
+        st.plotly_chart(fig_deg, width="stretch")
 
         # Table with color-coded gap
         rows = []
@@ -271,7 +271,7 @@ def render(results: dict):
                 "Assessment": d["Note"],
             })
         deg_display = pd.DataFrame(rows, index=names)
-        st.dataframe(deg_display, use_container_width=True)
+        st.dataframe(deg_display, width="stretch")
 
         styled_card(
             "OOS > IS (positive gap) may indicate a favorable sample period or lack of "
@@ -316,7 +316,7 @@ def render(results: dict):
             legend=dict(orientation="h", y=1.12),
         )
         apply_plotly_theme(fig_gn)
-        st.plotly_chart(fig_gn, use_container_width=True)
+        st.plotly_chart(fig_gn, width="stretch")
 
         # Summary table
         gn_df = pd.DataFrame(gn_data).T
@@ -327,7 +327,7 @@ def render(results: dict):
             "Net Sharpe": gn_df["net_sharpe"].map("{:.2f}".format),
             "Sharpe Lost to TC": (gn_df["gross_sharpe"] - gn_df["net_sharpe"]).map("{:.3f}".format),
         })
-        st.dataframe(gn_display, use_container_width=True)
+        st.dataframe(gn_display, width="stretch")
 
     # ── (e) Weight Stability Metrics ──
     styled_section_label("Weight Stability Metrics")
@@ -385,7 +385,7 @@ def render(results: dict):
             "Mean Weight Std": stab_df["Mean Weight Std"].map("{:.4f}".format),
             "Max Weight Std": stab_df["Max Weight Std"].map("{:.4f}".format),
         })
-        st.dataframe(stab_display, use_container_width=True)
+        st.dataframe(stab_display, width="stretch")
 
         # Time series chart of avg abs weight change
         fig_ws = go.Figure()
@@ -402,7 +402,7 @@ def render(results: dict):
             hovermode="x unified",
         )
         apply_plotly_theme(fig_ws)
-        st.plotly_chart(fig_ws, use_container_width=True)
+        st.plotly_chart(fig_ws, width="stretch")
 
         styled_card(
             "<b>Weight Stability:</b> MV + Sample has the highest average weight change "

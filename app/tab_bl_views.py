@@ -106,7 +106,7 @@ def render(results: dict):
         height=350,
     )
     apply_plotly_theme(fig_pi)
-    st.plotly_chart(fig_pi, use_container_width=True)
+    st.plotly_chart(fig_pi, width="stretch")
 
     styled_divider()
 
@@ -133,7 +133,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=1.12),
     )
     apply_plotly_theme(fig_comp)
-    st.plotly_chart(fig_comp, use_container_width=True)
+    st.plotly_chart(fig_comp, width="stretch")
 
     styled_card(
         "Posterior returns tilt toward assets with active views while anchoring "
@@ -170,7 +170,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=1.12),
     )
     apply_plotly_theme(fig_w)
-    st.plotly_chart(fig_w, use_container_width=True)
+    st.plotly_chart(fig_w, width="stretch")
 
     styled_divider()
 
@@ -202,7 +202,7 @@ def render(results: dict):
         title=dict(text="Posterior - Prior Correlation Change"),
     )
     apply_plotly_theme(fig_diff)
-    st.plotly_chart(fig_diff, use_container_width=True)
+    st.plotly_chart(fig_diff, width="stretch")
 
     # ── Views summary card ──
     if views:

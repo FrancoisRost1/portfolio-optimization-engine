@@ -109,7 +109,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=-0.15),
     )
     apply_plotly_theme(fig)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     # ── Cov method info ──
     styled_divider()

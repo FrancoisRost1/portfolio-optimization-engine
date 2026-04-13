@@ -107,15 +107,12 @@ with tabs[7]:
 
 # ── Footer ──
 st.markdown(
-    f"""
-    <div style="text-align: center; margin-top: 3rem; padding: 1rem;">
-        <span style="
-            font-family: {TOKENS['font_body']};
-            font-size: 0.75rem;
-            color: {TOKENS['text_muted']};
-        ">Portfolio Optimization Engine · MV / RP / HRP / Black-Litterman ·
-        14 ETFs · 10yr backtest · Bloomberg Dark Mode</span>
-    </div>
-    """,
+    (
+        f'<div style="text-align:center;margin-top:3rem;padding:1rem;">'
+        f'<span style="font-family:{TOKENS["font_body"]};font-size:0.75rem;'
+        f'color:{TOKENS["text_muted"]};">Portfolio Optimization Engine | '
+        f'MV / RP / HRP / Black-Litterman | 14 ETFs | 10yr backtest | '
+        f'Bloomberg Dark Mode</span></div>'
+    ),
     unsafe_allow_html=True,
 )

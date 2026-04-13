@@ -106,7 +106,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=-0.15), hovermode="x unified",
     )
     apply_plotly_theme(fig_cum)
-    st.plotly_chart(fig_cum, use_container_width=True)
+    st.plotly_chart(fig_cum, width="stretch")
 
     styled_divider()
 
@@ -136,7 +136,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=-0.2), hovermode="x unified",
     )
     apply_plotly_theme(fig_dd)
-    st.plotly_chart(fig_dd, use_container_width=True)
+    st.plotly_chart(fig_dd, width="stretch")
 
     styled_divider()
 
@@ -166,7 +166,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=-0.2), hovermode="x unified",
     )
     apply_plotly_theme(fig_rs)
-    st.plotly_chart(fig_rs, use_container_width=True)
+    st.plotly_chart(fig_rs, width="stretch")
 
     styled_divider()
 
@@ -187,14 +187,14 @@ def render(results: dict):
         with col_raw:
             st.markdown("**Raw (unscaled)**")
             if metrics_table:
-                st.dataframe(_format_metrics_df(metrics_table), use_container_width=True)
+                st.dataframe(_format_metrics_df(metrics_table), width="stretch")
         with col_vn:
             st.markdown("**Vol-Normalised (10%)**")
             if vn_metrics:
-                st.dataframe(_format_metrics_df(vn_metrics), use_container_width=True)
+                st.dataframe(_format_metrics_df(vn_metrics), width="stretch")
     else:
         if metrics_table:
-            st.dataframe(_format_metrics_df(metrics_table), use_container_width=True)
+            st.dataframe(_format_metrics_df(metrics_table), width="stretch")
 
     styled_divider()
 
@@ -226,7 +226,7 @@ def render(results: dict):
                 if pd.notna(r['gross_sharpe']) and pd.notna(r['net_sharpe']) else "N/A",
                 axis=1),
         })
-        st.dataframe(gn_display, use_container_width=True)
+        st.dataframe(gn_display, width="stretch")
 
         # Bar chart: gross vs net Sharpe
         fig_gn = go.Figure()
@@ -248,7 +248,7 @@ def render(results: dict):
             legend=dict(orientation="h", y=1.12),
         )
         apply_plotly_theme(fig_gn)
-        st.plotly_chart(fig_gn, use_container_width=True)
+        st.plotly_chart(fig_gn, width="stretch")
 
         styled_card(
             "<b>Turnover cost insight:</b> HRP and Risk Parity have lower turnover "
@@ -282,7 +282,7 @@ def render(results: dict):
             height=300, legend=dict(orientation="h", y=1.15),
         )
         apply_plotly_theme(fig_to)
-        st.plotly_chart(fig_to, use_container_width=True)
+        st.plotly_chart(fig_to, width="stretch")
 
     with c2:
         fig_hist = go.Figure()
@@ -301,7 +301,7 @@ def render(results: dict):
             legend=dict(orientation="h", y=1.15),
         )
         apply_plotly_theme(fig_hist)
-        st.plotly_chart(fig_hist, use_container_width=True)
+        st.plotly_chart(fig_hist, width="stretch")
 
 
 def _method_color(name: str) -> str:

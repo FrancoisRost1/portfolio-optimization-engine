@@ -77,7 +77,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=1.12),
     )
     apply_plotly_theme(fig)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     styled_divider()
 
@@ -89,7 +89,7 @@ def render(results: dict):
         display_df[col] = display_df[col].map("{:.2%}".format)
     for col in ["Marginal RC", "Absolute RC"]:
         display_df[col] = display_df[col].map("{:.6f}".format)
-    st.dataframe(display_df, use_container_width=True, hide_index=False)
+    st.dataframe(display_df, width="stretch", hide_index=False)
 
     styled_divider()
 
@@ -125,7 +125,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=1.12),
     )
     apply_plotly_theme(fig2)
-    st.plotly_chart(fig2, use_container_width=True)
+    st.plotly_chart(fig2, width="stretch")
 
     styled_card(
         "Negative risk contribution indicates a diversification/hedging benefit: "

@@ -56,7 +56,7 @@ def render(results: dict):
         legend=dict(orientation="h", y=1.12),
     )
     apply_plotly_theme(fig)
-    st.plotly_chart(fig, use_container_width=True)
+    st.plotly_chart(fig, width="stretch")
 
     styled_divider()
 
@@ -100,7 +100,7 @@ def render(results: dict):
                 margin=dict(l=10, r=10, t=40, b=10),
             )
             apply_plotly_theme(fig_pie)
-            st.plotly_chart(fig_pie, use_container_width=True)
+            st.plotly_chart(fig_pie, width="stretch")
 
     styled_divider()
 
@@ -134,6 +134,6 @@ def render(results: dict):
         ))
         fig_heat.update_layout(title="Rolling Weight Heatmap", height=350, xaxis_title="Rebalance Date", yaxis_title="Asset")
         apply_plotly_theme(fig_heat)
-        st.plotly_chart(fig_heat, use_container_width=True)
+        st.plotly_chart(fig_heat, width="stretch")
     else:
         st.info("No weight history available for this method.")
