@@ -9,3 +9,10 @@ outputs/
 .streamlit/secrets.toml
 *.parquet
 .DS_Store
+
+# secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
